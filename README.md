@@ -12,6 +12,15 @@ Since Vagrant keeps all its files in the current directory my usual scenario is 
 - VirtualBox (I use `brew cask` version, for standalone installer `VirtualBox` provider must be used)
 - Vagrant (same thing - tested on `brew cask` version)
 
+### Some important specifics
+- disk size is 50Gb (third party plugin is used)
+- login/password: `root`/`root`
+- `sshd` config:
+  - password authentication is **enabled**
+  - `root` login is **enabled**
+
+Thus VM is ready to be provisioned. I use Fabric scripts like [this]() one.
+
 #### macOS specific
 - `gsed` (can be installed with `brew install gnu-sed`)
 
