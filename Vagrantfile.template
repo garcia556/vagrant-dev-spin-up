@@ -1,0 +1,25 @@
+$script = <<SCRIPT
+sed -i "s/PasswordAuthentication yes/#PasswordAuthentication yes/" /etc/ssh/sshd_config
+sed -i "s/PermitRootLogin prohibit-password/PermitRootLogin yes/"  /etc/ssh/sshd_config
+echo root:root | chpasswd
+service sshd restart
+SCRIPT
+
+Vagrant.configure(2) do |config|
+
+  config.vm.box = "__image__"
+  config.disksize.size = "50GB"
+
+  config.vm.hostname = "__host__"
+  config.vm.network "private_network", ip: "__ip__"
+
+  config.vm.provider "__provider__" do |vb|
+    vb.memory = 1024
+    vb.cpus = 2
+    vb.name = "__name__"
+  end
+
+  config.vm.provision "shell", inline: $script
+
+end
+
