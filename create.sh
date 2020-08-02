@@ -172,6 +172,7 @@ echo "Spinning up ..."
 
 # run machine
 vagrant plugin install vagrant-disksize
+vagrant plugin install vagrant-vbguest
 vagrant --force destroy
 VM_HOSTNAME=${host} vagrant up --provider=${provider}
 
